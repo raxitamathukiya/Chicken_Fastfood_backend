@@ -12,7 +12,6 @@ app.use(cors())
 app.use(express.json())
 app.use("/users",userRoute)
 app.use("/product",productRoute)
-app.use("/admin",admincartRoute)
 app.use(auth)
 app.use("/cart",cartRoute)
 app.listen(process.env.port,async()=>{
