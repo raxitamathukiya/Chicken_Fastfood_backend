@@ -17,10 +17,16 @@ app.use(function(req, res, next) {
    res.setHeader('Access-Control-Allow-Credentials', true);
    next();
  });
+ app.get("/",async(req,res)=>{
+      try {
+         res.send("welcome to home page")
+      } catch (error) {
+         console.log(error)
+      }
+ })
 app.use("/users",userRoute)
 app.use("/product",productRoute)
-app.use(auth)
-app.use("/cart",cartRoute)
+app.use("/cart",auth,cartRoute)
 app.listen(process.env.port,async()=>{
    try {
     await connection

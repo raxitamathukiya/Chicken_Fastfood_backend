@@ -11,14 +11,14 @@ const auth=(req,res,next)=>{
                 req.body.userID=decoded.userID
                 next()
             }else{
-                res.send("......Please Login......")
+                res.send({message:`......Please Login......`})
             }
         } catch (error) {
             console.log(error)
         }
     }
     else{
-        res.send("......Please Login......")
+        res.send({message:`......Please Login......`})
     }
 }
 
