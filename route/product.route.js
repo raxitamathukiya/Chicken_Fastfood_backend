@@ -2,6 +2,7 @@ const express=require("express")
 const productRoute=express.Router()
 const {productModel}=require("../model/product.model")
 const {connection}=require("../db")
+require ('dotenv').config()
 
 productRoute.post("/add",async(req,res)=>{
     try {

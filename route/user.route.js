@@ -4,6 +4,7 @@ const {userModel}=require("../model/user.model")
 const {connection}=require("../db")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
+require ('dotenv').config()
 
 // /**
 //  * @swagger

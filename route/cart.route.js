@@ -2,6 +2,7 @@ const express=require("express")
 const cartRoute=express.Router()
 const {cartModel}=require("../model/cart.model")
 const {connection}=require("../db")
+require ('dotenv').config()
 
 cartRoute.post("/addcart",async(req,res)=>{
     try {
