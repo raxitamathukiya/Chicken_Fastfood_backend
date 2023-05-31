@@ -9,7 +9,7 @@ productRoute.post("/add",async(req,res)=>{
         const data=req.body
         const add=new productModel(data)
         await add.save()
-        res.status(200).send({message:"new product added"})
+        res.status(200).json({message:"new product added"})
     } catch (error) {
         console.log(error)
     }
@@ -47,7 +47,7 @@ productRoute.delete("/delete/:id",async(req,res)=>{
     try {
         const {id}=req.params 
         let data=await productModel.findByIdAndDelete({_id:id})
-        res.status(200).send({message:'Product deleted'})
+        res.status(200).json({message:'Product deleted'})
     } catch (error) {
         console.log(error)
     }
@@ -57,7 +57,7 @@ productRoute.put("/update/:id",async(req,res)=>{
         const {id}=req.params 
         const updata=req.body
         let data=await productModel.findByIdAndUpdate({_id:id},updata)
-        res.status(200).send({message:'Product Update'})
+        res.status(200).json({message:'Product Update'})
     } catch (error) {
         console.log(error)
     }

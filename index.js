@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  });
  app.get("/",async(req,res)=>{
       try {
-         res.send("welcome to home page")
+         res.json('welcome to home page')
       } catch (error) {
          console.log(error)
       }

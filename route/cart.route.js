@@ -9,7 +9,7 @@ cartRoute.post("/addcart",async(req,res)=>{
         let postdata=req.body
         let data=new cartModel(postdata)
         await data.save()
-        res.status(200).send({message:"This product added in to the cart"})
+        res.status(200).json({message:"This product added in to the cart"})
     } catch (error) {
         console.log(error)
     }
@@ -19,7 +19,7 @@ cartRoute.delete("/delete/:id",async(req,res)=>{
     try {
         const {id}=req.params 
     let data=await cartModel.findByIdAndDelete({_id:id})
-    res.status(200).send({message:'product deleted'})
+    res.status(200).json({message:'product deleted'})
     } catch (error) {
         console.log(error)
     }

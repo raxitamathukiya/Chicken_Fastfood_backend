@@ -55,17 +55,17 @@ userRoute.post("/register",async(req,res)=>{
         let data=await userModel.find({email})
         if(data.length!=0){
             console.log(data)
-            res.status(200).send({meassage:"user already exists!!"})
+            res.status(200).json({meassage:"user already exists!!"})
         }
        else{
         bcrypt.hash(password, 5, async(err, hash)=> {
             const adddata=new userModel({name,age,email,password:hash,city})
             await adddata.save()
-            res.status(200).send({msg:`Hello ${req.body.name} registration is successfully done!!`})
+            res.status(200).json({msg:`Hello ${req.body.name} registration is successfully done!!`})
         }); 
        }
     } catch (error) {
-        console.log("error")
+        console.log(error)
     }
 
 })
@@ -78,14 +78,14 @@ userRoute.post("/login",async(req,res)=>{
             bcrypt.compare(req.body.password,data.password,(err,result)=>{
                 if(result){
                     let token = jwt.sign({ user:data.name,userID:data._id}, 'raxita');
-                    res.status(200).send({message:`Hello ${data.name} login successfully`,"token":token,"name":data.name})
+                    res.status(200).json({message:`Hello ${data.name} login successfully`,"token":token,"name":data.name})
                 }else{
-                    res.status(200).send({message:`Invalid Credintails!!!!!!!`})
+                    res.status(200).json({message:`Invalid Credintails!!!!!!!`})
                 }
             })
         }
         else{
-            res.status(200).send({message:`Invalid Credintails!!!!!!!`})
+            res.status(200).json({message:`Invalid Credintails!!!!!!!`})
         }
     } catch (error) {
         console.log(error)
@@ -97,7 +97,7 @@ userRoute.delete("/delete/:id",async(req,res)=>{
     try {
         const {id}=req.params 
     let data=await userModel.findByIdAndDelete({_id:id})
-    res.status(200).send({message:'User deleted'})
+    res.status(200).json({message:'User deleted'})
     } catch (error) {
         console.log(error)
     }
