@@ -5,10 +5,8 @@ const {productRoute}=require("./route/product.route")
 const {auth}=require("./middlewear/auth.middleware")
 const {cartRoute}=require("./route/cart.route")
 // const {admincartRoute}=require("./route/admin_cart.route")
-const cors=require("cors")
 require ('dotenv').config()
 const app=express()
-app.use(cors())
 app.use(express.json())
 app.use(function(req, res, next) {
    res.setHeader('Access-Control-Allow-Origin', '*');
