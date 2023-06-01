@@ -33,7 +33,15 @@ cartRoute.get("/get",async(req,res)=>{
         
     }
 })
-
+cartRoute.get("/getcart",async(req,res)=>{
+    try {
+        let data= await cartModel.find()
+        res.status(200).json(data)
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
 
 module.exports={
     cartRoute
