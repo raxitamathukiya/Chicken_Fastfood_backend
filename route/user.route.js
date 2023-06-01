@@ -70,6 +70,7 @@ userRoute.post("/register",async(req,res)=>{
 
 })
 
+
 userRoute.post("/login",async(req,res)=>{
     try {
         let {email,password}=req.body
